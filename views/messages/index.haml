@@ -1,0 +1,23 @@
+.new_message
+  .error_messages
+    = error_messages_for @message
+
+  %form{:id => "new_message", :method => "POST", :action => "/messages/create"}
+    %label{:for => "message_body"}
+      Text Message
+    %input{:type => "text", :id => "message_body", :name => "message[body]", :maxlength => 70 }
+    %label{:for => "message_body"}
+      Code
+    %input{:type => "text", :id => "message_code", :name => "message[code]", :maxlength => 20 }
+    %input{:type => "submit", :value => "Send Text Message", :id => "message_submit"}
+
+%table.messages
+  %tr
+    %th Time
+    / %th Recipients
+    %th Message
+  - @messages.each do |message|
+    %tr
+      %td.date= message.created_at.strftime("%m/%d %I:%M %p")
+      / %td.recipients= message.recipients
+      %td.body= message.body

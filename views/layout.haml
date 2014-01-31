@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %title BC Racing
+    %link{:rel=>'stylesheet', :href=>'/stylesheets/index.css', :type => "text/css"}
+    / %script{:type => "text/javascript", :src  => "/javascripts/jquery.js"}
+    / %script{:type => "text/javascript", :src  => "/javascripts/index.js"}
+  %body
+    .notices
+      .flash_notice
+        = env['x-rack.flash'][:notice]
+      .flash_error
+        = env['x-rack.flash'][:error]
+    
+    .content
+      .header
+        %img{:src => "/images/bc_racing.jpg"}
+      = yield
